@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="VisualStudioLauncher.TemplateWidget"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VisualStudioLauncher"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"></ColumnDefinition>
+            <ColumnDefinition Width="60*"></ColumnDefinition>
+            <ColumnDefinition Width="30*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="2" CornerRadius="10" Background="#1E1E1E"></Border>
+        <!--<Label Grid.Column="2" Content="C++" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="Transparent" Background="Gray"></Label>-->
+    </Grid>
+</UserControl>
