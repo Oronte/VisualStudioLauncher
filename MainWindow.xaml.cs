@@ -23,8 +23,24 @@ namespace VisualStudioLauncher
 
         private void DragWindow(object sender, MouseButtonEventArgs e)
         {
+            if (e.ClickCount == 2)
+            {
+                Maximize(null, null);
+                return;
+            }
+
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
+        }
+
+        void Close(object sender, RoutedEventArgs e) => Close();
+        void Minimize(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
+        void Maximize(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+                WindowState = WindowState.Normal;
+            else 
+                WindowState = WindowState.Maximized;
         }
     }
 }
