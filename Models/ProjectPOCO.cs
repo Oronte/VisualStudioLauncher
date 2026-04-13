@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace VisualStudioLauncher.Models
 {
+
     internal class ProjectPOCO
     {
+        string Name { get; set; }
+        string Path { get; set; }
+        string Date { get; set; }
     }
 }
