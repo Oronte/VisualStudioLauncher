@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using EnvDTE;
 
 namespace VisualStudioLauncher
 {
@@ -24,5 +26,6 @@ namespace VisualStudioLauncher
         {
             InitializeComponent();
         }
+
     }
 }

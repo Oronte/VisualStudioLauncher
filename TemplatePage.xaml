@@ -33,14 +33,19 @@
                Margin="10,10,10,0"
                VerticalAlignment="Top" Height="40"/>
 
-            <ListBox Grid.Row="2"
+            <ItemsControl Grid.Row="2"
                  ItemsSource="{Binding MyItems}"
                  HorizontalAlignment="Stretch"
                  VerticalAlignment="Stretch"
                  Margin="10,0,0,0"
                  Background="Transparent"
                  BorderBrush="Transparent">
-            </ListBox>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:TemplateWidget />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </Grid>
 
         <Grid Grid.Column="1" Background="Transparent">
