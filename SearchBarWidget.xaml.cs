@@ -24,5 +24,17 @@ namespace VisualStudioLauncher
         {
             InitializeComponent();
         }
+        public string Placeholder
+        {
+            get => (string)GetValue(PlaceholderProperty);
+            set => SetValue(PlaceholderProperty, value);
+        }
+
+        public static readonly DependencyProperty PlaceholderProperty =
+            DependencyProperty.Register(
+                "Placeholder",
+                typeof(string),
+                typeof(TemplateWidget),
+                new PropertyMetadata("Enter text..."));
     }
 }
