@@ -29,7 +29,7 @@ namespace VisualStudioLauncher
 
         void InitRecentsTemplates()
         {
-            string json = File.ReadAllText("RecentsTemplate.json");
+            string json = File.ReadAllText(@"../../../Resources/Json/RecentsTemplate.json");
             TemplateManifest _alltemplates = JsonSerializer.Deserialize<TemplateManifest>(json);
             if (_alltemplates.Templates == null)
             {

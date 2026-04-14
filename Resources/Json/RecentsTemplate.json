@@ -1,0 +1,18 @@
+{
+  "Templates": [
+    {
+      "Name": "WPF Application",
+      "Description": "Application bureau avec XAML et code-behind",
+      "Language": " C# ",
+      "IconString": "Resources/Icon/WPFIcon.png",
+      "vstemplatePath": "Templates/CSharp/WPFApplication/csWPFApplication.vstemplate"
+    },
+    {
+      "Name": "Console App",
+      "Description": "A project for creating a command-line application that can run on .NET on Windows, Linux and macOS",
+      "Language": " C# ",
+      "IconString": "Resources/Icon/CSAppConsole.png",
+      "vstemplatePath": "Templates/CSharp/WPFApplication/csWPFApplication.vstemplate"
+    }
+  ]
+}
