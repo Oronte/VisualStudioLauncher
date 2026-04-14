@@ -31,7 +31,7 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="DarkSlateBlue"/>
+                    <Setter Property="Background" Value="DarkViolet"/>
                     <Setter Property="BorderBrush" Value="MediumPurple"/>
                 </Trigger>
             </Style.Triggers>
@@ -69,7 +69,7 @@
 
         <StackPanel Orientation="Vertical" Grid.Column="1" Margin="15,30,0,0">
             <TextBlock Text="Get started" Foreground="White" Margin="15" FontSize="18"/>
-            <Button Style="{StaticResource MainPageButton}" Height="50" Width="225" Margin="2">
+            <Button Style="{StaticResource MainPageButton}" Height="75" Width="250" Margin="2">
                 <Grid Width="225" Height="50">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -81,7 +81,7 @@
                     <TextBlock Grid.Column="1" Text="Get code from an online repository like GitHub or Azure Devops" Foreground="White" FontSize="8" Margin="0, 25, 15, 10"/>
                 </Grid>
             </Button>
-            <Button Style="{StaticResource MainPageButton}" Height="50" Width="225" Margin="2">
+            <Button Style="{StaticResource MainPageButton}" Height="75" Width="250" Margin="2">
                 <Grid Width="225" Height="50">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -94,7 +94,7 @@
                     <TextBlock Grid.Column="1" Text="Open a local Visual Studio project or .sln file" Foreground="White" FontSize="8" Margin="0, 25, 15, 10"/>
                 </Grid>
             </Button>
-            <Button Style="{StaticResource MainPageButton}" Height="50" Width="225" Margin="2">
+            <Button Style="{StaticResource MainPageButton}" Height="75" Width="250" Margin="2">
                 <Grid Width="225" Height="50">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -106,7 +106,7 @@
                     <TextBlock Grid.Column="1" Text="Navigate and edit code within any folder" Foreground="White" FontSize="8" Margin="0, 25, 15, 10"/>
                 </Grid>
             </Button>
-            <Button Style="{StaticResource MainPageButton}" Height="50" Width="225" Margin="2" Click="NavigateToTemplates">
+            <Button Style="{StaticResource MainPageButton}" Height="75" Width="250" Margin="2" Click="NavigateToTemplates">
                 <Grid Width="225" Height="50">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
