@@ -41,7 +41,7 @@ namespace VisualStudioLauncher
 
             if (result == true)
             {
-                System.Diagnostics.Process.Start(new ProcessStartInfo
+                Process.Start(new ProcessStartInfo
                 {
                     FileName = _openFileDialog.FileName,
                     UseShellExecute = true
