@@ -11,10 +11,10 @@ namespace VisualStudioLauncher
     {
         public Template Model { get; }
 
-        public string Name => Model.Name;
-        public string Description => Model.Description;
-        public string Icon => Model.Icon;
-        public string Language => Model.Language;
+        //public string Name => Model.Name;
+        //public string Description => Model.Description;
+        //public string Icon => Model.Icon;
+        //public string Language => Model.Language;
 
         public ICommand OpenCommand { get; }
 

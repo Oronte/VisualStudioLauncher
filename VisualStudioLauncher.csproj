@@ -9,8 +9,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Icon\A.jpg" />
+    <None Remove="Resources\Icon\A.png" />
+    <None Remove="Resources\Icon\ConsoleApplicationCSharpsIcon.png" />
+    <None Remove="Resources\Icon\ConsoleApplicationIcon.png" />
+    <None Remove="Resources\Icon\CSAppConsole.png" />
+    <None Remove="Resources\Icon\WPFIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="envdte" Version="17.14.40260" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icon\CSAppConsole.png" />
+    <Resource Include="Resources\Icon\WPFIcon.png" />
   </ItemGroup>
 
 </Project>
