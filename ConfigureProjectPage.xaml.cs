@@ -46,7 +46,7 @@ namespace VisualStudioLauncher
                 Console.WriteLine("OOOOH il est null");
                 return;
             }
-            //SolutionCreator.CreateProject(_vm.SelectedTemplate.vstemplatePath, _location, _projectName);
+            SolutionCreator.CreateProject(_vm.SelectedTemplate.vstemplatePath, _location, _projectName);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

@@ -5,14 +5,14 @@
       "Description": "Application bureau avec XAML et code-behind",
       "Language": " C# ",
       "IconString": "Resources/Icon/WPFIcon.png",
-      "vstemplatePath": "Resources/Template/CSharp/Windows/1033/ConsoleApplication/csConsoleApplication.vstemplate"
+      "vstemplatePath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\ProjectTemplates\\CSharp\\Windows\\1033\\WPFApplication\\csWPFApplication.vstemplate"
     },
     {
       "Name": "Console App",
       "Description": "A project for creating a command-line application that can run on .NET on Windows, Linux and macOS",
       "Language": " C# ",
       "IconString": "Resources/Icon/CSAppConsole.png",
-      "vstemplatePath": "Resources/Template/CSharp/Windows/1033/WPFApplication/csWPFApplication.vstemplate"
+      "vstemplatePath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\ProjectTemplates\\CSharp\\Windows\\1033\\ConsoleApplication\\csConsoleApplication.vstemplate"
     }
   ]
 }

@@ -12,13 +12,8 @@ namespace VisualStudioLauncher
     {
         public static void CreateProject(string templatePath, string solutionPath, string projectName)
         {
-            // 1. Résout le chemin absolu depuis la racine du projet
-            string projectRoot = Path.GetFullPath(Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\"));
-
-            string absoluteTemplatePath = Path.IsPathRooted(templatePath)
-                ? templatePath
-                : Path.GetFullPath(Path.Combine(projectRoot, templatePath.Replace("/", "\\")));
+            // 1. Résout les variables d'environnement + chemin absolu
+            string absoluteTemplatePath = ResolvePath(templatePath);
 
             // 2. Vérifications
             if (!File.Exists(absoluteTemplatePath))
@@ -49,6 +44,26 @@ namespace VisualStudioLauncher
             );
 
             dte.MainWindow.Visible = true;
+        }
+
+        private static string ResolvePath(string path)
+        {
+            // Remplace les variables d'environnement
+            string resolved = path
+                .Replace("%ProgramFiles%", Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles))
+                .Replace("%ProgramFiles(x86)%", Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86))
+                .Replace("%AppData%", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData))
+                .Replace("%LocalAppData%", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+
+            // Si déjà absolu → on retourne tel quel
+            if (Path.IsPathRooted(resolved))
+                return resolved;
+
+            // Sinon → chemin relatif depuis la racine du projet
+            string projectRoot = Path.GetFullPath(Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\"));
+
+            return Path.GetFullPath(Path.Combine(projectRoot, resolved.Replace("/", "\\")));
         }
     }
 }
