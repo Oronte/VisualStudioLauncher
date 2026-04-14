@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EnvDTE;
+using Microsoft.VisualStudio.TextManager.Interop;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +15,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-using EnvDTE;
 
 namespace VisualStudioLauncher
 {
@@ -27,6 +28,18 @@ namespace VisualStudioLauncher
             InitializeComponent();
             TemplatePageViewModel _vm = new TemplatePageViewModel();
             DataContext = _vm;
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            var _page = Activator.CreateInstance(typeof(ConfigureProjectPage));
+            ((Page)_page).DataContext = DataContext;
+            ((MainWindow)Application.Current.MainWindow).frame.Navigate(_page);
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            PageLoader.ChangeFrame(typeof(MainPage));
         }
     }
 }
