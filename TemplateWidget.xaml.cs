@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace VisualStudioLauncher
 {
     /// <summary>
-    /// Interaction logic for RecentTemplateWidget.xaml
+    /// Interaction logic for TemplateWidget.xaml
     /// </summary>
-    public partial class RecentTemplateWidget : UserControl
+    public partial class TemplateWidget : UserControl
     {
-        public RecentTemplateWidget()
+        public TemplateWidget()
         {
             InitializeComponent();
         }
