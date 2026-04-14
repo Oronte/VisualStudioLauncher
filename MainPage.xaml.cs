@@ -23,6 +23,9 @@ namespace VisualStudioLauncher
         public MainPage()
         {
             InitializeComponent();
+            DataContext = new RecentProjectsViewModel();
         }
+
+        void NavigateToTemplates(object sender, RoutedEventArgs e) => PageLoader.ChangeFrame(typeof(TemplatePage));
     }
 }

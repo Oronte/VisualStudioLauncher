@@ -19,6 +19,7 @@ namespace VisualStudioLauncher
         public MainWindow()
         {
             InitializeComponent();
+            PageLoader.ChangeFrame(typeof(MainPage));
         }
 
         private void DragWindow(object sender, MouseButtonEventArgs e)

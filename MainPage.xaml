@@ -26,7 +26,15 @@
             <TextBlock Text="Open recent" FontSize="20" Foreground="White" Height="50" Width="150" HorizontalAlignment="Left"/>
             <TextBox Text="Search recent (Alt+S)" Background="DarkGray" Foreground="White" Height="25" Width="350" TextAlignment="Left" HorizontalAlignment="Left" Margin="5,75,0,0"/>
 
-            <ListView Grid.Row="1" Background="Transparent" Margin="7, 20, 30, 0"/>
+            <Grid x:Name="recentProjects" Grid.Row="1" Background="Transparent" Margin="7, 20, 30, 0">
+                <DataGrid ItemsSource="{Binding Projects}" SelectedItem="{Binding SelectedProject}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Background="Transparent">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Name}" Width="3*" Foreground="Black"/>
+                        <DataGridTextColumn Binding="{Binding Path}" Width="5*" Foreground="Black"/>
+                        <DataGridTextColumn Binding="{Binding Date}" Width="2*" Foreground="Black"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
         </Grid>
 
         <StackPanel Orientation="Vertical" Grid.Column="1">
@@ -34,7 +42,7 @@
             <Button Content="Clone a repository" Margin="15"/>
             <Button Content="Open a project or solution" Margin="15"/>
             <Button Content="Open a local folder" Margin="15"/>
-            <Button Content="Create a new project" Margin="15"/>
+            <Button Content="Create a new project" Margin="15" Click="NavigateToTemplates"/>
             <TextBlock Text="Continue whithout code ->" Foreground="White" Margin="15" FontSize="7" HorizontalAlignment="Center"/>
         </StackPanel>
     </Grid>

@@ -39,7 +39,7 @@
     </Window.Resources>
 
     <Grid Background="Transparent">
-        <Border CornerRadius="10"
+        <Border x:Name="mainWindowBorder" CornerRadius="10"
             Background="#1E1E1E"
             BorderBrush="MediumPurple"
             BorderThickness="1">
@@ -54,7 +54,7 @@
 
         </Border>
         <Grid Margin="30, 45, 30, 45">
-            <Frame Source="/MainPage.xaml"/>
+            <Frame x:Name="frame" NavigationUIVisibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>

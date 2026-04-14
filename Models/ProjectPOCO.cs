@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace VisualStudioLauncher.Models
 {
 
-    internal class ProjectPOCO
+    public class ProjectPOCO
     {
-        string Name { get; set; }
-        string Path { get; set; }
-        string Date { get; set; }
+        public string Name { get; set; }
+        public string Path { get; set; }
+        public string Date { get; set; }
     }
 }
