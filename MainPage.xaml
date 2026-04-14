@@ -8,6 +8,36 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainPage">
 
+    <Page.Resources>
+        <Style x:Key="MainPageButton" TargetType="Button">
+            <Setter Property="Background" Value="DimGray"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Content="{TemplateBinding Content}"/>
+
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DarkSlateBlue"/>
+                    <Setter Property="BorderBrush" Value="MediumPurple"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -37,13 +67,58 @@
             </Grid>
         </Grid>
 
-        <StackPanel Orientation="Vertical" Grid.Column="1">
-            <TextBlock Text="Get started" Foreground="White" Margin="15"/>
-            <Button Content="Clone a repository" Margin="15"/>
-            <Button Content="Open a project or solution" Margin="15"/>
-            <Button Content="Open a local folder" Margin="15"/>
-            <Button Content="Create a new project" Margin="15" Click="NavigateToTemplates"/>
-            <TextBlock Text="Continue whithout code ->" Foreground="White" Margin="15" FontSize="7" HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="15,30,0,0">
+            <TextBlock Text="Get started" Foreground="White" Margin="15" FontSize="18"/>
+            <Button Style="{StaticResource MainPageButton}" Height="50" Width="225" Margin="2">
+                <Grid Width="225" Height="50">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="/Views/CloneRepo.png" Width="25" Height="25"/>
+                    <TextBlock Grid.Column="1" Text="Clone a repository" Foreground="White" FontSize="15" Margin="0,0,45,25" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="Get code from an online repository like GitHub or Azure Devops" Foreground="White" FontSize="8" Margin="0, 25, 15, 10"/>
+                </Grid>
+            </Button>
+            <Button Style="{StaticResource MainPageButton}" Height="50" Width="225" Margin="2">
+                <Grid Width="225" Height="50">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                  
+
+                    <Image Source="/Views/OpenProject.png" Width="25" Height="25"/>
+                    <TextBlock Grid.Column="1" Text="Open a project or solution" Foreground="White" FontSize="15" Margin="0,0,0,25" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="Open a local Visual Studio project or .sln file" Foreground="White" FontSize="8" Margin="0, 25, 15, 10"/>
+                </Grid>
+            </Button>
+            <Button Style="{StaticResource MainPageButton}" Height="50" Width="225" Margin="2">
+                <Grid Width="225" Height="50">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="/Views/OpenFolder.png" Width="25" Height="25"/>
+                    <TextBlock Grid.Column="1" Text="Open a local folder" Foreground="White" FontSize="15" Margin="0,0,45,25" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="Navigate and edit code within any folder" Foreground="White" FontSize="8" Margin="0, 25, 15, 10"/>
+                </Grid>
+            </Button>
+            <Button Style="{StaticResource MainPageButton}" Height="50" Width="225" Margin="2" Click="NavigateToTemplates">
+                <Grid Width="225" Height="50">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="/Views/CreateProject.png" Width="25" Height="25"/>
+                    <TextBlock Grid.Column="1" Text="Create a new project" Foreground="White" FontSize="15" Margin="0,0,45,25" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="Choose a project template with code scaffolding to get started" Foreground="White" FontSize="8" Margin="0, 25, 15, 10"/>
+                </Grid>
+            </Button>
+            <Button Content="Continue whithout code ->" Foreground="CornflowerBlue" Margin="5" FontSize="7" HorizontalAlignment="Center" Background="Transparent"/>
         </StackPanel>
     </Grid>
 </Page>
