@@ -36,6 +36,32 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="InvisibleButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Content="{TemplateBinding Content}"/>
+
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style x:Key="LinkButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -81,13 +107,61 @@
             <local:SearchBarWidget Placeholder="Search recent (Alt+S)" Height="35" Width="350" HorizontalAlignment="Left" Margin="5,45,0,0"/>
 
             <Grid x:Name="recentProjects" Grid.Row="1" Background="Transparent" Margin="7, 20, 30, 0">
-                <DataGrid ItemsSource="{Binding Projects}" SelectedItem="{Binding SelectedProject}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Background="Transparent">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Name}" Width="3*" Foreground="Black"/>
-                        <DataGridTextColumn Binding="{Binding Path}" Width="5*" Foreground="Black"/>
-                        <DataGridTextColumn Binding="{Binding Date}" Width="2*" Foreground="Black"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+
+                <ListView ItemsSource="{Binding Projects}"
+              SelectedItem="{Binding SelectedProject}"
+              Background="Transparent"
+              BorderThickness="0">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Padding" Value="0"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Gray"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Button Padding="0" Background="Transparent" Command="{Binding OpenCommand}" BorderThickness="0" Style="{StaticResource InvisibleButton}">
+                                <Border Padding="10" Margin="0,2" Background="Transparent" CornerRadius="4">
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Name}"
+                                    Foreground="White"
+                                    FontSize="14"
+                                    FontWeight="SemiBold"/>
+
+                                            <TextBlock Text="{Binding Path}"
+                                    Foreground="#AAAAAA"
+                                    FontSize="11"
+                                    TextTrimming="CharacterEllipsis"/>
+                                        </StackPanel>
+
+                                        <TextBlock Grid.Column="1"
+                                Text="{Binding Date}"
+                                Foreground="#888"
+                                VerticalAlignment="Center"
+                                            HorizontalAlignment="Right"
+                                FontSize="11"/>
+                                    </Grid>
+
+                                </Border>
+                            </Button>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
             </Grid>
         </Grid>
 

@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace VisualStudioLauncher
 {
-    public class RelayCommand
+    public class RelayCommand : ICommand
     {
         Action<object> executeMethod = null;
         Func<object, bool> canExecuteMethod = null;
