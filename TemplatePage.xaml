@@ -34,7 +34,7 @@
                VerticalAlignment="Top" Height="40"/>
 
             <ItemsControl Grid.Row="2"
-                 ItemsSource="{Binding MyItems}"
+                 ItemsSource="{Binding RecentsTemplate}"
                  HorizontalAlignment="Stretch"
                  VerticalAlignment="Stretch"
                  Margin="10,0,0,0"
