@@ -33,13 +33,25 @@ namespace VisualStudioLauncher
             bool? result = _openFolder.ShowDialog();
 
             if (result == true)
-                location.Placeholder = _openFolder.FolderName;
+                location.Text = _openFolder.FolderName;
         }
 
         void CreateProject(object sender, EventArgs e)
         {
-            string _projectName = projectName.Placeholder;
-            string _location = location.Placeholder;
+            string _projectName = projectName.Text;
+            string _location = location.Text;
+            TemplatePageViewModel _vm = (TemplatePageViewModel)DataContext;
+            if(_vm == null)
+            {
+                Console.WriteLine("OOOOH il est null");
+                return;
+            }
+            //SolutionCreator.CreateProject(_vm.SelectedTemplate.vstemplatePath, _location, _projectName);
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            PageLoader.ChangeFrame(typeof(TemplatePage));
         }
     }
 }

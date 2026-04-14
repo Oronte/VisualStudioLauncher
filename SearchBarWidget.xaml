@@ -99,7 +99,7 @@
                 <TextBox x:Name="MyBox"
                  Foreground="White"
                  FontSize="12"
-                 Text=""
+                 Text="{Binding Text, RelativeSource={RelativeSource AncestorType=UserControl}}"
                  Style="{StaticResource NoChromeTextBox}"
                  VerticalAlignment="Center"/>
 

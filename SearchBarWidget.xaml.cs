@@ -30,11 +30,24 @@ namespace VisualStudioLauncher
             set => SetValue(PlaceholderProperty, value);
         }
 
+        public string Text
+        {
+            get => (string)GetValue(TextProperty);
+            set => SetValue(TextProperty, value);
+        }
+
         public static readonly DependencyProperty PlaceholderProperty =
             DependencyProperty.Register(
-                "Placeholder",
+                nameof(Placeholder),
                 typeof(string),
-                typeof(TemplateWidget),
+                typeof(SearchBarWidget),
                 new PropertyMetadata("Enter text..."));
+
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register(
+                nameof(Text),
+                typeof(string),
+                typeof(SearchBarWidget),
+                new PropertyMetadata(""));
     }
 }

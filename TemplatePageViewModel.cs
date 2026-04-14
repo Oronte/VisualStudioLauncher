@@ -1,4 +1,5 @@
-﻿using EnvDTE90;
+﻿using EnvDTE;
+using EnvDTE90;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,6 +22,17 @@ namespace VisualStudioLauncher
     {
 
         public ObservableCollection<Template> RecentsTemplate { get; set; } = new ObservableCollection<Template>();
+        Template selectedTemplate = null;
+
+        public Template SelectedTemplate
+        {
+            get { return selectedTemplate; }
+            set
+            {
+                selectedTemplate = value;
+                OnPropertyChanged();
+            }
+        }
 
         public TemplatePageViewModel()
         {
