@@ -54,7 +54,7 @@
 
         </Border>
         <Grid Margin="30, 45, 30, 45">
-            <Frame Source="/MainPage.xaml"/>
+            <Frame Source="/TemplatePage.xaml"/>
         </Grid>
     </Grid>
 </Window>

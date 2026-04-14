@@ -1,0 +1,110 @@
+﻿<UserControl x:Class="VisualStudioLauncher.SearchBarWidget"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VisualStudioLauncher"
+             mc:Ignorable="d" 
+             d:DesignHeight="35" d:DesignWidth="400">
+    <UserControl.Resources>
+        <Style x:Key="FocusBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="#2E2E2E"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0.5"/>
+
+            <Style.Triggers>
+
+                <!-- 🔵 PRIORITÉ 1 : FOCUS + HOVER -->
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsKeyboardFocusWithin" Value="True"/>
+                        <Condition Property="IsMouseOver" Value="True"/>
+                    </MultiTrigger.Conditions>
+
+                    <Setter Property="Background" Value="#2E2E2E"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                </MultiTrigger>
+
+                <!-- 🔷 FOCUS SEUL -->
+                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="DarkGray"/>
+                </Trigger>
+
+                <!-- ⚪ HOVER SEUL -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#3D3D3D"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                </Trigger>
+
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="NoChromeTextBox" TargetType="TextBox">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="TextPlaceHolder">
+
+            <!-- par défaut visible -->
+            <Setter Property="Visibility" Value="Visible"/>
+
+            <Style.Triggers>
+
+                <!-- ❌ si texte != vide -->
+                <DataTrigger Binding="{Binding Text, ElementName=MyBox}" Value="">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+
+                <!-- ❌ si focus (selectionné) -->
+                <DataTrigger Binding="{Binding IsKeyboardFocused, ElementName=MyBox}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+
+            </Style.Triggers>
+
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid>
+        <Border Grid.Column="0"
+        Style="{StaticResource FocusBorderStyle}"
+        Padding="5"
+        Margin="5">
+
+            <Grid>
+
+                <TextBlock Text="Enter text..."
+           Foreground="Gray"
+           Margin="3,0,0,0"
+           VerticalAlignment="Center"
+           IsHitTestVisible="False"
+           Style="{StaticResource TextPlaceHolder}">
+
+                </TextBlock>
+
+                <!-- TEXTBOX -->
+                <TextBox x:Name="MyBox"
+                 Foreground="White"
+                 FontSize="12"
+                 Text=""
+                 Style="{StaticResource NoChromeTextBox}"
+                 VerticalAlignment="Center"/>
+
+            </Grid>
+
+        </Border>
+    </Grid>
+</UserControl>

@@ -12,21 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using EnvDTE;
 
 namespace VisualStudioLauncher
 {
     /// <summary>
-    /// Interaction logic for TemplatePage.xaml
+    /// Interaction logic for SearchBarWidget.xaml
     /// </summary>
-    public partial class TemplatePage : Page
+    public partial class SearchBarWidget : UserControl
     {
-        public TemplatePage()
+        public SearchBarWidget()
         {
             InitializeComponent();
-            TemplatePageViewModel _vm = new TemplatePageViewModel();
-            DataContext = _vm;
         }
     }
 }
