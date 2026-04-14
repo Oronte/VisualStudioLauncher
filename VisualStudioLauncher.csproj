@@ -8,4 +8,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="envdte" Version="17.14.40260" />
+  </ItemGroup>
+
 </Project>
