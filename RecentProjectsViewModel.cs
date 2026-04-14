@@ -12,7 +12,10 @@ namespace VisualStudioLauncher
 {
     class RecentProjectsViewModel : ViewModelBase
     {
-        public RelayCommand OpenCommand => new RelayCommand(_execute => OpenProject(), _canExecute => SelectedProject != null);
+        public RelayCommand OpenCommand => new RelayCommand(
+    execute => OpenProject(execute as ProjectPOCO),
+    canExecute => canExecute is ProjectPOCO
+);
         public RelayCommand RemoveCommand => new RelayCommand(_execute => RemoveProject(), _canExecute => SelectedProject != null);
 
         ProjectPOCO selectedProject = null;
@@ -35,11 +38,12 @@ namespace VisualStudioLauncher
 
         public void Init() => Projects = new ObservableCollection<ProjectPOCO>(RecentProjectReader.GetRecentProjects());
 
-        void OpenProject()
+        void OpenProject(ProjectPOCO project)
         {
+            if (project?.Path == null) return;
             System.Diagnostics.Process.Start(new ProcessStartInfo
             {
-                FileName = selectedProject.Path,
+                FileName = project.Path,
                 UseShellExecute = true
             });
         }

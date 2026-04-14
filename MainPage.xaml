@@ -109,54 +109,80 @@
             <Grid x:Name="recentProjects" Grid.Row="1" Background="Transparent" Margin="7, 20, 30, 0">
 
                 <ListView ItemsSource="{Binding Projects}"
-              SelectedItem="{Binding SelectedProject}"
-              Background="Transparent"
-              BorderThickness="0">
+          SelectedItem="{Binding SelectedProject}"
+          Background="Transparent"
+          BorderThickness="0"
+          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="BorderThickness" Value="0"/>
                             <Setter Property="Padding" Value="0"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Gray"/>
-                                </Trigger>
-                            </Style.Triggers>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <Border x:Name="HoverBorder"
+                                Background="Transparent"
+                                CornerRadius="4"
+                                Margin="0,1">
+                                            <ContentPresenter/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="HoverBorder" Property="Background" Value="#2A2A2A"/>
+                                            </Trigger>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="HoverBorder" Property="Background" Value="#2D2B55"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
                         </Style>
                     </ListView.ItemContainerStyle>
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Button Padding="0" Background="Transparent" Command="{Binding OpenCommand}" BorderThickness="0" Style="{StaticResource InvisibleButton}">
-                                <Border Padding="10" Margin="0,2" Background="Transparent" CornerRadius="4">
+                            <Button Padding="0"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding DataContext.OpenCommand, 
+                  RelativeSource={RelativeSource AncestorType=ListView}}"
+        CommandParameter="{Binding}"
+                    Style="{StaticResource InvisibleButton}"
+                    HorizontalContentAlignment="Stretch">
 
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
+                                <Grid Margin="8,6">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
 
-                                        <StackPanel>
-                                            <TextBlock Text="{Binding Name}"
-                                    Foreground="White"
-                                    FontSize="14"
-                                    FontWeight="SemiBold"/>
-
-                                            <TextBlock Text="{Binding Path}"
-                                    Foreground="#AAAAAA"
-                                    FontSize="11"
-                                    TextTrimming="CharacterEllipsis"/>
-                                        </StackPanel>
-
-                                        <TextBlock Grid.Column="1"
-                                Text="{Binding Date}"
-                                Foreground="#888"
+                                    <StackPanel
                                 VerticalAlignment="Center"
-                                            HorizontalAlignment="Right"
-                                FontSize="11"/>
-                                    </Grid>
+                                Margin="6,0,12,0">
+                                        <TextBlock Text="{Binding Name}"
+                                   Foreground="White"
+                                   FontSize="13"
+                                   FontWeight="SemiBold"
+                                   TextTrimming="CharacterEllipsis"/>
+                                        <TextBlock Text="{Binding Path}"
+                                   Foreground="#888888"
+                                   FontSize="11"
+                                   TextTrimming="CharacterEllipsis"
+                                   Margin="0,2,0,0"/>
+                                    </StackPanel>
 
-                                </Border>
+                                    <TextBlock Grid.Column="1"
+                               Text="{Binding Date}"
+                               Foreground="#666666"
+                               FontSize="11"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Right"/>
+                                </Grid>
+
                             </Button>
                         </DataTemplate>
                     </ListView.ItemTemplate>
