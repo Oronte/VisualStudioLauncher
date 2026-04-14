@@ -10,7 +10,7 @@
 
     <Page.Resources>
         <Style x:Key="MainPageButton" TargetType="Button">
-            <Setter Property="Background" Value="DimGray"/>
+            <Setter Property="Background" Value="#383838"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="Template">
@@ -31,8 +31,32 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="DarkViolet"/>
+                    <Setter Property="Background" Value="#221d46"/>
                     <Setter Property="BorderBrush" Value="MediumPurple"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="LinkButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Content="{TemplateBinding Content}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontWeight" Value="DemiBold"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -54,7 +78,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="Open recent" FontSize="20" Foreground="White" Height="50" Width="150" HorizontalAlignment="Left"/>
-            <TextBox Text="Search recent (Alt+S)" Background="DarkGray" Foreground="White" Height="25" Width="350" TextAlignment="Left" HorizontalAlignment="Left" Margin="5,75,0,0"/>
+            <local:SearchBarWidget Placeholder="Search recent (Alt+S)" Height="35" Width="350" HorizontalAlignment="Left" Margin="5,45,0,0"/>
 
             <Grid x:Name="recentProjects" Grid.Row="1" Background="Transparent" Margin="7, 20, 30, 0">
                 <DataGrid ItemsSource="{Binding Projects}" SelectedItem="{Binding SelectedProject}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Background="Transparent">
@@ -81,7 +105,7 @@
                     <TextBlock Grid.Column="1" Text="Get code from an online repository like GitHub or Azure Devops" Foreground="White" FontSize="8" Margin="0, 25, 15, 10"/>
                 </Grid>
             </Button>
-            <Button Style="{StaticResource MainPageButton}" Height="75" Width="250" Margin="2">
+            <Button Style="{StaticResource MainPageButton}" Height="75" Width="250" Margin="2" Click="OpenLocalProject">
                 <Grid Width="225" Height="50">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -94,7 +118,7 @@
                     <TextBlock Grid.Column="1" Text="Open a local Visual Studio project or .sln file" Foreground="White" FontSize="8" Margin="0, 25, 15, 10"/>
                 </Grid>
             </Button>
-            <Button Style="{StaticResource MainPageButton}" Height="75" Width="250" Margin="2">
+            <Button Style="{StaticResource MainPageButton}" Height="75" Width="250" Margin="2" Click="OpenLocalProject">
                 <Grid Width="225" Height="50">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -118,7 +142,7 @@
                     <TextBlock Grid.Column="1" Text="Choose a project template with code scaffolding to get started" Foreground="White" FontSize="8" Margin="0, 25, 15, 10"/>
                 </Grid>
             </Button>
-            <Button Content="Continue whithout code ->" Foreground="CornflowerBlue" Margin="5" FontSize="7" HorizontalAlignment="Center" Background="Transparent"/>
+            <Button Style="{StaticResource LinkButton}" Content="Continue whithout code ->" Foreground="CornflowerBlue" Margin="5" FontSize="10" HorizontalAlignment="Center" Background="Transparent" Click="OpenLocalProject"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -33,10 +33,7 @@ namespace VisualStudioLauncher
             Init();
         }
 
-        public void Init()
-        {
-            Projects = new ObservableCollection<ProjectPOCO>(RecentProjectReader.GetRecentProjects());
-        }
+        public void Init() => Projects = new ObservableCollection<ProjectPOCO>(RecentProjectReader.GetRecentProjects());
 
         void OpenProject()
         {
